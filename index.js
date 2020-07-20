@@ -43,7 +43,8 @@ app.post('/submitUrl', async (req, res, next) => {
   url: req.body.url,
   date: new Date()
 });
-    const url = req.protocol + '://' + req.get('host') + req.originalUrl + "/";
+    let url = req.protocol + '://' + req.get('host') + req.originalUrl;
+    url = url.replace('submitUrl', '');
   res.send("<strong>" + req.body.url + '</strong> Submitted Successfully!\n' + "<h3>Your new URL is <a href='"+ url + DOC_NAME + "'>"+url + DOC_NAME+ "</a>");
 });
 
